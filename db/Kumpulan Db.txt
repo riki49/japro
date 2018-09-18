@@ -1,0 +1,24 @@
+Db Megah
+
+Supplier // ncan lieur sih
+
+id
+nama
+alamat
+pic
+phone
+
+Kastemer // 
+
+id
+nama
+alamat
+phone
+fax
+
+Shipper //
+id
+nama
+alamat
+pic
+phone
