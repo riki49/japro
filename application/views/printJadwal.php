@@ -20,7 +20,6 @@ th {
     text-align: left;
     padding: 8px;
     color: #ffffff;
-    /*background-color: #000000;*/
 }
 tr:nth-child(even) {
     background-color: #dddddd;
@@ -43,15 +42,15 @@ tr:nth-child(even) {
 </h3><br>
 <table id="t01" align="center">
   <tr align="center">
-    <th >Nomer Induk </th>
-    <th >Nama Lengkap</th>
-    <th >kelamin</th>
-    <th >Tempat/Tanggal Lahir</th>
-    <th >Nama Kampung</th>
-    <th >RW/RW</th>
-    <th >status</th>
-    <th >Pekerjaan</th>
-    <th >agama</th>
+    <th style="background-color: #000000;" >Nomer Induk </th>
+    <th style="background-color: #000000;" >Nama Lengkap</th>
+    <th style="background-color: #000000;">kelamin</th>
+    <th style="background-color: #000000;">Tempat/Tanggal Lahir</th>
+    <th style="background-color: #000000;">Nama Kampung</th>
+    <th style="background-color: #000000;">RW/RW</th>
+    <th style="background-color: #000000;">status</th>
+    <th style="background-color: #000000;" >Pekerjaan</th>
+    <th style="background-color: #000000;">agama</th>
 
  </tr>
   <?php 

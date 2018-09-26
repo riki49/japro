@@ -1,19 +1,12 @@
 <?php 
-$cetak = $_SESSION['cetak'];
-$nama = $_SESSION['nama'];
-$today = new DateTime('today');
-$CI =& get_instance();
-$CI->load->library('hitungUmur');
-$total =0;
-$today = new DateTime();
+// $status=0;
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Master Admin</title>
+  <title>Form tambah Warga</title>
   <!-- Tell the browser to be responsive to screen width -->
   
   <!-- Bootstrap 3.3.7 -->
@@ -46,10 +39,8 @@ $today = new DateTime();
   <header class="main-header">
     <!-- Logo -->
     <a class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>H</b>FD</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>KUDAWAR</b></span>
+      <span class="logo-lg"><b>JAPRO</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -60,7 +51,7 @@ $today = new DateTime();
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="<?php echo base_url()?>assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs"><?php echo $nama; ?></span>
+              <span class="hidden-xs"><?php echo "admin bro!!!" ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -68,7 +59,7 @@ $today = new DateTime();
                 <img src="<?php echo base_url()?>assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  <?php echo $nama; ?>
+                  <?php echo "admin bro!!!"; ?>
                 </p>
               </li>
               <!-- Menu Body -->
@@ -99,7 +90,7 @@ $today = new DateTime();
               class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-              <p><?php echo $nama ?></p>
+              <p><?php echo "admin bro!!!" ?></p>
             </div>
           </div>
           <!-- sidebar menu: : style can be found in sidebar.less -->
@@ -107,7 +98,7 @@ $today = new DateTime();
             <!--  -->
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-cc"></i> <span>Urutkan Data Warga</span>
+                <i class="fa fa-cc"></i><span>pesanan</span>
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
@@ -120,7 +111,7 @@ $today = new DateTime();
 
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-clone"></i> <span>Kelompokan data Warga</span>
+                <i class="fa fa-clone"></i> <span>proses jadwal</span>
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
@@ -133,83 +124,97 @@ $today = new DateTime();
         </section>
     <!-- /.sidebar -->
   </aside>
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Tambah Pesanan
+        <small></small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="<?php echo base_url('admin') ?>"><i class="fa fa-dashboard"></i> admin</a></li>
+        <li class="active">tambah</li>
+      </ol>
+    </section>
 
     <!-- Main content -->
-    <section class="content">
+<section class="content">
       <div class="row">
 
         <div class="col-xs-12">
-        <a href="<?php echo base_url()?>admin/create"><button 
-        type="button" class="btn bg-olive btn-flat margin">
-        tambah warga</button></a>
-        <a href="<?php echo base_url()?>admin/create"><button 
-        type="button" class="btn bg-olive btn-flat margin">
-        data warga tetap</button></a>
-        <a href="<?php echo base_url()?>admin/tetap"><button 
-        type="button" class="btn bg-olive btn-flat margin">
-        data warga pindahan</button></a>
-        <a href="<?php echo base_url()?>admin/create"><button 
-        type="button" class="btn bg-olive btn-flat margin">
-        data warga meninggal</button></a>
-        <a href="<?php echo base_url()?>admin/cetak/<?php echo $cetak;?>"><button 
-        type="button" class="btn bg-olive btn-flat margin">
-        cetak</button></a>
-                
-          <!-- /.box -->
+        <a href="<?php echo base_url()?>admin"><button type="button" class="btn bg-olive btn-flat margin">Kembali</button></a>
+            <div class="box box-info">
+            <!-- /.box-header --> 
+            <!-- form start -->
+            <form action="<?php echo base_url()?>pengelolaPesanan/createPesanan" method="post" class="form-horizontal">
+              <div class="box-body">
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">pemesan</label>
 
-          <div class="box">
-            <div class="box-header">
+                  <div class="col-sm-6">
+                    <input type="text" name="pemesan"  class="form-control" id="success" />
+                  </div>
+                </div>
 
-            <!-- /.box-header -->
-            <!-- <div class="box-body"> -->
-              <table style="border: 1px solid black;" >
-                <thead style="border: 1px solid black;">
-                <tr style="border: 1px solid black;">
-                    <th style="border: 1px solid black;" class="col-md-1">NIK</th>
-                    <th style="border: 1px solid black;" class="col-md-1">Nama</th>
-                    <th style="border: 1px solid black;" class="col-md-1">kelamin</th>
-                    <th style="border: 1px solid black;" class="col-md-1">TTL</th>
-                    <th style="border: 1px solid black;" class="col-md-1">alamat</th>
-                    <th style="border: 1px solid black;" class="col-md-1">RT/RW</th>
-                    <th style="border: 1px solid black;" class="col-md-1">umur</th>
-                    <th style="border: 1px solid black;" class="col-md-1">status</th>
-                    <th style="border: 1px solid black;" class="col-md-1">Pekerjaan</th>
-                    <th style="border: 1px solid black;" class="col-md-1">Agama</th>
-                    <th class="col-md-1">pilihan</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php
-                foreach ($dataWarga as $dataWarga) : 
-                ?>
-                <?php $biday = new DateTime($dataWarga->tanggal); $diff = $today->diff($biday); ?>
-                    <tr>
-                        <td style="border: 1px solid black;"><?=$dataWarga->nik?></td>
-                        <td style="border: 1px solid black;"><?=$dataWarga->nama?></td>
-                        <td style="border: 1px solid black;"><?=$dataWarga->kelamin?></td>
-                        <td style="border: 1px solid black;"><?=$dataWarga->tempat.",".
-                        date('d/m/Y', strtotime($dataWarga->tanggal))?></td>
-                        <td style="border: 1px solid black;"><?=$dataWarga->alamat?></td>
-                        <td style="border: 1px solid black;"><?=$dataWarga->rt."/".$dataWarga->rw?></td>
-                        <td style="border: 1px solid black;"><?=$diff->y; ?></td>
-                        <td style="border: 1px solid black;"><?=$dataWarga->status?></td>
-                        <td style="border: 1px solid black;"><?=$dataWarga->pekerjaan?></td>
-                        <td style="border: 1px solid black;"><?=$dataWarga->agama?></td>
-                        <td>
-                            <?php $total = $total + 1; ?>
-                            <a href="<?php echo base_url()?>admin/update/<?php echo $dataWarga->nik;?>">update</a>
-                        </td>
-                    </tr>
-                   <?php endforeach; ?>
-                </tbody>
-              </table>
-              <div align="right" style="font-size: 30; font-weight: bold; padding-right: 40%"><?php echo "jumlah warga : ".$total; ?></div>
-            </div>
-            <!-- /.box-body -->
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">Tanggal Pesan</label>
+
+                  <div class="col-sm-6">
+                    <input type="date" name="tanggal"  class="form-control" id="success" />
+                  </div>
+                </div>
+                    <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">nama produk</label>
+                  <div class="col-sm-6">
+                    <select name="produk" class="form-control" id="success">
+                      <option value="makaroni">makaroni</option> 
+                      <option value="siomay">siomay</option> 
+                      <option value="bihun">bihun</option> 
+                      <option value="pangsit">pangsit</option> 
+                      <option value="batagor">batagor</option> 
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">level</label>
+
+                  <div class="col-sm-6">
+                    <select name="level" class="form-control" id="success">
+                        <option value="aman">aman</option> 
+                        <option value="siaga">siaga</option>    
+                        <option value="waspada">waspada</option>    
+                        <option value="bahaya">bahaya</option>    
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">jumlah pesan</label>
+
+                  <div class="col-sm-6">
+                    <input type="text" name="jumlah"  class="form-control" id="success" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">harga satuan</label>
+
+                  <div class="col-sm-6">
+                    <input type="text" name="harga"  class="form-control" id="success" />
+                  </div>
+                </div>
+            
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">Action</label>
+
+                  <div class="col-sm-6">
+                    <input type="submit" class="btn bg-olive btn-flat margin" value="Simpan">
+                    <input type="reset" class="btn bg-maroon btn-flat margin" value="Ulangi">
+                  </div>
+                </div>
+              </div>
+            </form>
           </div>
+          
           <!-- /.box -->
         </div>
         <!-- /.col -->
@@ -231,7 +236,6 @@ $today = new DateTime();
     <div class="tab-content">
       <!-- Home tab content -->
       <div class="tab-pane" id="control-sidebar-home-tab"></div>
-    </div>
   </aside>
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
