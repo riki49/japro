@@ -41,32 +41,26 @@ tr:nth-child(even) {
 <h3 align="center">
 </h3><br>
 <table id="t01" align="center">
-  <tr align="center">
+  <tr id='judul' align="center">
     <th style="background-color: #000000;" >Nomer Induk </th>
     <th style="background-color: #000000;" >Nama Lengkap</th>
     <th style="background-color: #000000;">kelamin</th>
     <th style="background-color: #000000;">Tempat/Tanggal Lahir</th>
     <th style="background-color: #000000;">Nama Kampung</th>
     <th style="background-color: #000000;">RW/RW</th>
-    <th style="background-color: #000000;">status</th>
-    <th style="background-color: #000000;" >Pekerjaan</th>
-    <th style="background-color: #000000;">agama</th>
 
  </tr>
   <?php 
   $total=0;
-    foreach ($report as $key) :   
+    foreach ($dataPesanan as $key) :   
   ?>
   <tr>
-  <td><?php echo $key->nik?></td>
-  <td><?php echo $key->nama?></td>
-  <td><?php echo $key->kelamin?></td>
-  <td><?php echo $key->tempat."/".$key->tanggal?></td>
-  <td><?php echo $key->alamat?></td>
-  <td><?php echo $key->rt."/".$key->rw?></td>
-  <td><?php echo $key->status?></td>
-  <td><?php echo $key->pekerjaan?></td>
-  <td><?php echo $key->agama?></td>
+  <td><?php echo $key->pemesan?></td>
+  <td><?php echo $key->tanggal?></td>
+  <td><?php echo $key->produk?></td>
+  <td><?php echo $key->level?></td>
+  <td><?php echo $key->jumlah?></td>
+  <td><?php echo $key->harga?></td>
 
   <?php $total = $total + 1; ?>
   </tr>

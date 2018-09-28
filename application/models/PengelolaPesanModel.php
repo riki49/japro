@@ -7,10 +7,14 @@ class PengelolaPesanModel extends CI_Model{
 	}
 
 	function readPesanan(){
-	$query = $this->db->get('pesanan');
-	if ($query->num_rows() >= 1)
-	return $query->row();
-	else
-	return '';
+		$query = $this->db->get('pesanan');
+		return $query -> result();
 	}
+
+	function deletePesanan($id){
+		$query = $this->db->where('id', $id);
+		$this->db->delete('pesanan');
+	}
+
+
 }

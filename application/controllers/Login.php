@@ -6,6 +6,7 @@ class Login extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('loginmodel');
+		$this->load->model('pengelolaPesanModel');
 	}
 
 	public function index() {
@@ -23,10 +24,9 @@ class Login extends CI_Controller {
 			// 'nama' => $loginResult->username
 		);
 			$this->session->set_userdata($data_session);
-			$this->load->view('adminView');
+			redirect('admin');
 		} else {
 			echo "<script>alert('periksa username/password!');history.go(-1);</script>"; 
-			// redirect('');
 			$this->load->view('loginView');
 		}
 	}

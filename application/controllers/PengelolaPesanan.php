@@ -26,5 +26,13 @@ class PengelolaPesanan extends CI_Controller {
 		$this->pengelolaPesanModel->insertPesanan($pemesan, $tanggal, $produk, $level, $jumlah, $harga);
 		redirect('admin');
 	}
+
+	public function deletePesanan($id) {
+		$this->pengelolaPesanModel->deletePesanan($id);
+		redirect('admin');
+	}
 	
+	public function mengurutkanProduksi() {
+		echo "jadwal ututan";
+	}
 }

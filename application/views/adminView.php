@@ -46,9 +46,9 @@ $today = new DateTime();
   <header class="main-header">
     <!-- Logo -->
     <a class="logo">
-      <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>JAPRO</b></span>
     </a>
+    
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
@@ -88,50 +88,7 @@ $today = new DateTime();
     </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar">
-      <section class="sidebar">
-          <!-- Sidebar user panel -->
-          <div class="user-panel">
-            <div class="pull-left image">
-              <img src="<?php echo base_url()?>assets/dist/img/user2-160x160.jpg" 
-              class="img-circle" alt="User Image">
-            </div>
-            <div class="pull-left info">
-              <p><?php echo "admin bro!!!" ?></p>
-            </div>
-          </div>
-          <!-- sidebar menu: : style can be found in sidebar.less -->
-          <ul class="sidebar-menu" data-widget="tree">
-            <!--  -->
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-cc"></i><span>pesanan</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="<?php echo base_url("kelolaCetak/sortingAge") ?>"><i class="fa fa-circle-o"></i>Berdasar Umur</a></li>
-                <li><a href="<?php echo base_url("kelolaCetak/sortingName") ?>"><i class="fa fa-circle-o"></i>Berdasar nama</a></li>
-              </ul>
-            </li>
-
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-clone"></i> <span>proses jadwal</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="<?php echo base_url()?>kelolaCetak/kelompokMuda"><i class="fa fa-circle-o"></i> Anak dan Remaja</a></li>
-                <li ><a href="<?php echo base_url()?>kelolaCetak/kelompokDewasa"><i class="fa fa-circle-o"></i> Dewasa</a></li>
-              </ul>
-            </li>
-        </section>
-    <!-- /.sidebar -->
-  </aside>
-
+  
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
 
@@ -144,7 +101,11 @@ $today = new DateTime();
         type="button" class="btn bg-olive btn-flat margin">
         tambah pesanan</button></a>
 
-        <a href="<?php echo base_url()?>admin/create"><button 
+        <a href="<?php echo base_url()?>pengelolaPesanan/mengurutkanProduksi"><button 
+        type="button" class="btn bg-olive btn-flat margin">
+        urutkan</button></a>
+
+        <a href="<?php echo base_url()?>admin/cetak"><button 
         type="button" class="btn bg-olive btn-flat margin">
         print</button></a>
           <!-- /.box -->
@@ -154,9 +115,10 @@ $today = new DateTime();
                 <tr>
                     <th class="col-md-1">Id</th>
                     <th class="col-md-1">Tanggal input</th>
-                    <th class="col-md-1">pemesan</th>
+                    <th class="col-md-1">produk</th>
+                    <th class="col-md-1">level</th>
+                    <th class="col-md-1">jumlah</th>
                     <th class="col-md-1">harga</th>
-                    <th class="col-md-1">lama pesanan</th>
                     <th class="col-md-1">Opsi</th>
                 </tr>
                 </thead>
@@ -178,13 +140,15 @@ $today = new DateTime();
                           <?= $psn->level?>
                         </td>
                         <td>
-                          <?= $psn->harga?></td>
+                          <?= $psn->jumlah?>
+                        </td>
                         <td>
-                          <?= $psn->jumlah?></td>
+                          <?= $psn->harga?>
+                        </td>
+
                         <td>
-                          
                             <!-- <a href="<?php echo base_url()?>produk/update/<?php echo $m_produk->id;?>" class="btn btn-warning">update</a> -->
-                            <a onclick="if(confirm('Apakah anda yakin ingin menghapus data ini ??')){ location.href='<?php echo base_url()?><?php echo $psn->id;?>'}" class="btn btn-danger">Hapus</a>
+                            <a onclick="if(confirm('Apakah pesanan ini telah selesai ??')){ location.href='<?php echo base_url()?>pengelolaPesanan/deletePesanan/<?php echo $psn->id;?>'}" class="btn btn-danger">selesai</a>
                         </td>
                     </tr>
                    <?php 
@@ -194,7 +158,6 @@ $today = new DateTime();
               </table>
             </div>
             <!-- /.box-body -->
-              <div align="right" style="font-size: 30; font-weight: bold; padding-right: 40%"><?php echo "jumlah warga : ".$total; ?></div>
             </div>
             <!-- /.box-body -->
           </div>
