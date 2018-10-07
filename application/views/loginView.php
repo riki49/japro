@@ -37,6 +37,13 @@
 
     <form action="<?php echo base_url('login/doLogin') ?>" method="post">
       <div class="form-group has-feedback">
+        <select name="level" class="form-control" id="success" >
+          <option value="admin">Admin</option> 
+          <option value="kepalaProduksi">kepala Produksi</option> 
+        </select>
+      </div>
+
+      <div class="form-group has-feedback">
         <input type="text" name="username" class="form-control" placeholder="Email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>

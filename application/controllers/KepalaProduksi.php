@@ -1,36 +1,27 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Admin extends CI_Controller {
+class KepalaProduksi extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
 		$this->load->library('pdf');
 		$this->load->model('loginmodel');
 		$this->load->model('pengelolaPesanModel');
-		if ($this->session->userdata('level') != 'admin') {
+		if ($this->session->userdata('level') != 'kepalaProduksi') {
 			echo "<script>alert('silahkan login terlebih dahulu!!!');history.go(-1);</script>"; 
 			$this->load->view('loginView');
 		}
 	}
 
 	public function index() {
-		$data['dataPesanan'] = $this->pengelolaPesanModel->readPesanan();
-		$this->load->view('adminView', $data);
+		$data['dataPesanan'] = $this->pengelolaPesanModel->urutkanPesananKepala();
+		$this->load->view('KepalaProduksiView', $data);
 	}
-
-	public function createPesanan() {
-		$this->load->view('createPesananView');
-	}
-
-	public function urutkanPesanan() {
-		$data['dataPesanan'] = $this->pengelolaPesanModel->urutkanPesananAdmin();
-		$this->load->view('urutanPesananView', $data);
-	}
-
+	
 	public function cetak() {
 		ob_start();
-		$data['dataPesanan'] = $this->pengelolaPesanModel->readPesanan();
+		$data['dataPesanan'] = $this->pengelolaPesanModel->urutkanPesananKepala();
 		$this->load->view('printJadwal', $data);
 		$html = ob_get_contents();
         

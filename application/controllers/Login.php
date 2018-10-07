@@ -14,17 +14,21 @@ class Login extends CI_Controller {
 	}
 	
 	public function doLogin() {
+		//masukan
 		$id = $this->input->post('username');
+		$level = $this->input->post('level');
 		$pass = md5($this->input->post('password'));
+
+		//kembalian
 		$loginResult = $this->loginmodel->getLogin($id);
 		$passResult = $loginResult->password;
-		if($loginResult != '' && $pass == $passResult){
+		$levelResult = $loginResult->level;
+		if($level == $levelResult && $pass == $passResult){
 			$data_session = array (
-			'status' =>TRUE,
-			// 'nama' => $loginResult->username
-		);
+			'level'=>$level
+			);
 			$this->session->set_userdata($data_session);
-			redirect('admin');
+				redirect($level);
 		} else {
 			echo "<script>alert('periksa username/password!');history.go(-1);</script>"; 
 			$this->load->view('loginView');
@@ -41,5 +45,6 @@ class Login extends CI_Controller {
 		$user = $this->input->post('username');
 		$password = md5($this->input->post('password'));
 		$this->loginmodel->createUser($user, $password);
+		var_dump($password);
 	}
 }
