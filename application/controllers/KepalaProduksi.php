@@ -15,20 +15,12 @@ class KepalaProduksi extends CI_Controller {
 	}
 
 	public function index() {
-		$data['dataPesanan'] = $this->pengelolaPesanModel->urutkanPesananKepala();
+		$data['dataPesanan'] = $this->pengelolaPesanModel->readPesananBelumTersedia();
 		$this->load->view('KepalaProduksiView', $data);
 	}
 	
-	public function cetak() {
-		ob_start();
-		$data['dataPesanan'] = $this->pengelolaPesanModel->urutkanPesananKepala();
-		$this->load->view('printJadwal', $data);
-		$html = ob_get_contents();
-        
-        ob_end_clean();
-        require_once('./assets/html2pdf/html2pdf.class.php');
-		$pdf = new HTML2PDF('L','A4','en');
-		$pdf->WriteHTML($html);
-		$pdf->Output('Laporan Data Transaksi.pdf', 'P');
+	public function sediakanPesanan($id) {
+		$this->pengelolaPesanModel->sediakanPesanan($id);
+		redirect('kepalaProduksi');
 	}
 }

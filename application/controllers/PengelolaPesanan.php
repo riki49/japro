@@ -39,9 +39,4 @@ class PengelolaPesanan extends CI_Controller {
 		$this->pengelolaPesanModel->deletePesanan($id);
 		redirect('admin');
 	}
-
-	public function ubahPesananKepala($id) {
-		$this->pengelolaPesanModel->ubahPesananKepala($id);
-		redirect('kepalaProduksi');
-	}
 }

@@ -41,6 +41,7 @@ tr:nth-child(even) {
 <h3 align="center">
 </h3>
 <br>
+<div style="text-align: center; padding-bottom: 20px; font-size: 14px">Pesanan belum terkirim</div>
 <table id="t01" align="center">
   <tr id='judul' align="center">
     <th style="background-color: #000000; width: 90px">pemesan</th>
@@ -49,11 +50,13 @@ tr:nth-child(even) {
     <th style="background-color: #000000; width: 90px">level</th>
     <th style="background-color: #000000; width: 90px">jumlah</th>
     <th style="background-color: #000000; width: 90px">harga</th>
+    <th style="background-color: #000000; width: 90px">jumlah bayar</th>
 
  </tr>
   <?php 
-  $total=0;
-    foreach ($dataPesanan as $key) :   
+  $totalTerkirim=0;
+  $totalBelumTerkirim=0;
+    foreach ($belumterkirim as $key) :   
   ?>
   <tr>
   <td><?php echo $key->pemesan?></td>
@@ -62,13 +65,15 @@ tr:nth-child(even) {
   <td><?php echo $key->level?></td>
   <td><?php echo $key->jumlah?></td>
   <td><?php echo $key->harga?></td>
-  <?php $total = $total + 1; ?>
+  <td><?php echo $key->harga * $key->jumlah?></td>
+  <?php $totalBelumTerkirim = $totalBelumTerkirim + 1; ?>
   </tr>
   <?php endforeach; ?>
-  <td style="border: none;"><?php echo "total pesanan  : ".$total; ?></td>
+  <td style="border: none;"><?php echo "total pesanan  : ".$totalBelumTerkirim; ?></td>
 </table>
+
 <br>
-<div style="text-align: center; padding-top: 100px; padding-bottom: 20px">Pesanan terkirim</div>
+<div style="text-align: center; padding-top: 80px; padding-bottom: 20px; font-size: 14px">Pesanan terkirim</div>
 <table id="t01" align="center">
   <tr id='judul' align="center">
     <th style="background-color: #000000; width: 90px">pemesan</th>
@@ -77,10 +82,11 @@ tr:nth-child(even) {
     <th style="background-color: #000000; width: 90px">level</th>
     <th style="background-color: #000000; width: 90px">jumlah</th>
     <th style="background-color: #000000; width: 90px">harga</th>
+    <th style="background-color: #000000; width: 90px">jumlah bayar</th>
 
  </tr>
   <?php 
-    foreach ($dataPesanan as $key) :   
+    foreach ($terkirim as $key) :   
   ?>
   <tr>
   <td><?php echo $key->pemesan?></td>
@@ -89,8 +95,41 @@ tr:nth-child(even) {
   <td><?php echo $key->level?></td>
   <td><?php echo $key->jumlah?></td>
   <td><?php echo $key->harga?></td>
+  <td><?php echo $key->harga * $key->jumlah?></td>
   </tr>
+  <?php $totalTerkirim = $totalTerkirim + 1; ?>
   <?php endforeach; ?>
+  <td style="border: none;"><?php echo "total pesanan  : ".$totalTerkirim; ?></td>
+</table>
+
+<br>
+<div style="text-align: center; padding-top: 80px; padding-bottom: 20px; font-size: 14px">Pesanan belum tersedia</div>
+<table id="t01" align="center">
+  <tr id='judul' align="center">
+    <th style="background-color: #000000; width: 90px">pemesan</th>
+    <th style="background-color: #000000; width: 90px">tanggal</th>
+    <th style="background-color: #000000; width: 90px">produk</th>
+    <th style="background-color: #000000; width: 90px">level</th>
+    <th style="background-color: #000000; width: 90px">jumlah</th>
+    <th style="background-color: #000000; width: 90px">harga</th>
+    <th style="background-color: #000000; width: 90px">jumlah bayar</th>
+
+ </tr>
+  <?php 
+    foreach ($belumtersedia as $key) :   
+  ?>
+  <tr>
+  <td><?php echo $key->pemesan?></td>
+  <td><?php echo $key->tanggal?></td>
+  <td><?php echo $key->produk?></td>
+  <td><?php echo $key->level?></td>
+  <td><?php echo $key->jumlah?></td>
+  <td><?php echo $key->harga?></td>
+  <td><?php echo $key->harga * $key->jumlah?></td>
+  </tr>
+  <?php $totalTerkirim = $totalTerkirim + 1; ?>
+  <?php endforeach; ?>
+  <td style="border: none;"><?php echo "total pesanan  : ".$totalTerkirim; ?></td>
 </table>
 </body>
 </html>

@@ -15,7 +15,7 @@ class Admin extends CI_Controller {
 	}
 
 	public function index() {
-		$data['dataPesanan'] = $this->pengelolaPesanModel->readPesanan();
+		$data['dataPesanan'] = $this->pengelolaPesanModel->readSemuaPesanan();
 		$this->load->view('adminView', $data);
 	}
 
@@ -24,14 +24,18 @@ class Admin extends CI_Controller {
 	}
 
 	public function urutkanPesanan() {
-		$data['dataPesanan'] = $this->pengelolaPesanModel->urutkanPesananAdmin();
-		$this->load->view('urutanPesananView', $data);
+		$urutanPesanan['urutanPesanan'] = $this->pengelolaPesanModel->readUrutanPesanan();
+
+		$this->load->view('urutanPesananView', $urutanPesanan);
 	}
 
 	public function cetak() {
 		ob_start();
-		$data['dataPesanan'] = $this->pengelolaPesanModel->readPesanan();
-		$this->load->view('printJadwal', $data);
+		$dataBelumTerkirim['belumterkirim'] = $this->pengelolaPesanModel->readPesananBelumTerkirim();
+		$dataBelumTersedia['belumtersedia'] = $this->pengelolaPesanModel->readPesananBelumTersedia();
+		$dataTerkirim['terkirim'] = $this->pengelolaPesanModel->readPesananTerkirim();
+
+		$this->load->view('printJadwal', $dataBelumTerkirim + $dataBelumTersedia + $dataTerkirim);
 		$html = ob_get_contents();
         
         ob_end_clean();

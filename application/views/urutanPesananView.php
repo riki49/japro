@@ -66,7 +66,7 @@ $jumlahPesanan = 0;
                 </thead>
                 <tbody>
                 <?php
-                foreach ($dataPesanan as $psn) : 
+                foreach ($urutanPesanan as $psn) : 
                 ?>
                     <tr>
                         <td>

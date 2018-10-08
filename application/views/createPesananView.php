@@ -1,6 +1,6 @@
 <?php
   $id="";
-  $harga=2000;
+  $harga=5000;
   $tgl_produksi="";
   $jumlah="";
   $level ="";

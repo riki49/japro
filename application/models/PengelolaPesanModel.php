@@ -6,26 +6,44 @@ class PengelolaPesanModel extends CI_Model{
 		$this->db->insert('pesanan', array('pemesan' => $pemesan, 'tanggal' => $tanggal, 'produk'=>$produk ,'level' => $level, 'jumlah' => $jumlah, 'harga' => $harga, 'waktu'=>$waktu,'status'=>$status ));
 	}
 
-	function readPesanan(){
+	function readSemuaPesanan(){
 		$query = $this->db->get('pesanan');
 		return $query -> result();
 	}
 
-	function urutkanPesananKepala(){
+	function readPesananBelumTersedia(){
 		$query = $this->db->order_by('waktu', 'ASC');
-		$query = $this->db->where('kirim', 'belum terkirim');
+		$query = $this->db->where('status', 'belum tersedia');
 		$query = $this->db->get('pesanan');
 		return $query -> result();
 	}
 
-	function urutkanPesananAdmin(){
+	function readPesananBelumTerkirim(){
 		$query = $this->db->order_by('waktu', 'ASC');
-		$query = $this->db->where("(status='belum tersedia' OR kirim='belum terkirim')");
+		$query = $this->db->where("(kirim!='terkirim' and status='tersedia')");
 		$query = $this->db->get('pesanan');
 		return $query -> result();
 	}
 
-	function ubahPesananKepala($id){
+
+	function readPesananTerkirim(){
+		$query = $this->db->order_by('waktu', 'ASC');
+		$query = $this->db->where("(kirim='terkirim')");
+		$query = $this->db->get('pesanan');
+		return $query -> result();
+	}
+
+	
+
+	function readUrutanPesanan(){
+		$query = $this->db->order_by('waktu', 'ASC');
+		$query = $this->db->where("(kirim!='terkirim')");
+		$query = $this->db->get('pesanan');
+		return $query -> result();
+	}
+
+
+	function sediakanPesanan($id){
 		$query = $this->db->where('id', $id);
 		$data = array(
 			'status' => 'tersedia');

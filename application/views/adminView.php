@@ -105,7 +105,7 @@
                           <?= $psn->status?>
                         </td>
                         <td>
-                          <?= $psn->waktu?>
+                          <?= $psn->waktu . " menit"?>
                         </td>
 <!-- 
                         <td>

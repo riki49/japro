@@ -108,7 +108,7 @@ $jumlahPesanan = 0;
                           $jumlahPesanan = $jumlahPesanan + 1;
                         ?>
                         <td>
-                            <a onclick="if(confirm('Apakah pesanan ini telah selesai ??')){ location.href='<?php echo base_url()?>pengelolaPesanan/ubahPesananKepala/<?php echo $psn->id;?>'}" class="btn btn-danger">selesai</a>
+                            <a onclick="if(confirm('Apakah pesanan ini telah selesai ??')){ location.href='<?php echo base_url()?>kepalaProduksi/sediakanPesanan/<?php echo $psn->id;?>'}" class="btn btn-danger">selesai</a>
                         </td>
                     </tr>
                    <?php 
