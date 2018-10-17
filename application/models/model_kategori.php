@@ -3,12 +3,12 @@ class Model_kategori extends CI_Model{
     
     
     
-    function tampilkan_data(){
+    function tampil_data(){
         
         return $this->db->get('kategori_barang');
     }
     
-  function tampilkan_data_paging($halaman,$batas)
+  function tampil_data_paging($halaman,$batas)
   {
       return $this->db->query("select * from kategori_barang");
   }

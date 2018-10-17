@@ -19,7 +19,7 @@ class auth extends CI_Controller{
                 $this->db->where('username',$username);
                 $this->db->update('operator',array('last_login'=>date('Y-m-d')));
                 $this->session->set_userdata(array('status_login'=>'oke','username'=>$username));
-                redirect('dashboard');
+                redirect('transaksi');
             }
             else{
                 redirect('auth/login');

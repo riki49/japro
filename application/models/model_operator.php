@@ -24,9 +24,11 @@ class model_operator extends CI_Model{
         return $this->db->get_where('operator',$param);
     }
 
-    function get() {
-        // $param  =   array('operator_id'=>$id);
-        $query = $this->db->get('operator');
-        return $query->result();
+
+//darurat untuk tambah user
+    function save() {
+        $param  =   array('operator_id'=>'1', 'nama_lengkap'=>'admin','username'=> 'admin', 'password'=>md5('admin'));
+
+        $query = $this->db->insert('operator', $param);
     }
 }

@@ -4,14 +4,14 @@ class operator extends ci_controller{
    function __construct() {
         parent::__construct();
         $this->load->model('model_operator');
-        chek_session();
+        // chek_session();
     }
     
     function index()
     {
         $data['record']=  $this->model_operator->tampildata();
         //$this->load->view('operator/lihat_data',$data);
-        $this->template->load('template','operator/lihat_data',$data);
+        $this->load->view('operator/lihat_data',$data);
     }
     
     function post()
@@ -29,7 +29,7 @@ class operator extends ci_controller{
         }
         else{
             //$this->load->view('operator/form_input');
-            $this->template->load('template','operator/form_input');
+            $this->load->view('operator/form_input');
         }
     }
     

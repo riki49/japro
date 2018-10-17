@@ -1,26 +1,32 @@
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-8 col-sm-offset-3">
                         <h2 class="page-header">
-                            POS (Point of Sale) <small>Laporan Transaksi</small>
+                            Laporan Periode
                         </h2>
                     </div>
-                </div> 
-                <!-- /. ROW  -->
+                </div>
 
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-3">
+                        <?php $this->load->view('template')  ?>
+                    </div>
+                              
+
+                <div class="row">
+                    <div class="col-md-8">
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 <?php echo form_open('transaksi/laporan', array('class'=>'form-inline')); ?>
                                     <div class="form-group">
                                         <label for="exampleInputName2">Tanggal</label>
-                                        <input type="text" name="tanggal1" class="form-control" placeholder="Tanggal Mulai">
+                                        <input type="date" name="tanggal1" class="form-control" placeholder="Tanggal Mulai">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail2"> - </label>
-                                        <input type="text" name="tanggal2" class="form-control" placeholder="Tanggal Selesai">
+                                        <input type="date" name="tanggal2" class="form-control" placeholder="Tanggal Selesai">
                                     </div>
                                     <button class="btn btn-primary btn-sm" type="submit" name="submit">Tampilkan</button>
+                                    <button class="btn btn-primary btn-sm" type="submit" name="submit">Cetak Laporan</button>
                                 </form>
                             </div>
                         </div>
@@ -28,7 +34,7 @@
                     </div>
 
 
-                    <div class="col-md-12">
+                    <div class="col-md-8">
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 <div class="table-responsive">

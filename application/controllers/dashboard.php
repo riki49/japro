@@ -3,7 +3,7 @@ class Dashboard extends CI_Controller{
     
     
     function index(){
-        chek_session();
-        $this->template->load('template','v_dashboard');
+        // chek_session();
+        $this->load->view('template','v_dashboard');
     }
 }

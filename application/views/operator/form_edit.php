@@ -1,13 +1,16 @@
-                <div class="row">
-                    <div class="col-md-12">
+                   <div class="row">
+                    <div class="col-md-8 col-sm-offset-3">
                         <h2 class="page-header">
-                            POS (Point of Sale) <small>Edit Data Operator</small>
+                            Edit Pegawai
                         </h2>
                     </div>
-                </div> 
-                <!-- /. ROW  -->
+                </div>
 
                 <div class="row">
+                    <div class="col-md-3">
+                        <?php $this->load->view('template')  ?>
+                    </div>
+
                     <div class="col-md-12">
                         <div class="panel panel-default">
                             <div class="panel-body">

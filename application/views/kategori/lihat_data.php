@@ -1,21 +1,26 @@
-                <div class="row">
-                    <div class="col-md-12">
+                
+               <div class="row">
+                    <div class="col-md-8 col-sm-offset-3">
                         <h2 class="page-header">
-                            POS (Point of Sale) <small>Data Kategori</small>
+                            Kategori Barang
                         </h2>
                     </div>
-                </div> 
-                <!-- /. ROW  -->
+                </div>
 
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-3">
+                        <?php $this->load->view('template')  ?>
+                    </div>
+
+                <div class="row">
+                    <div class="col-md-8">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                  <?php echo anchor('kategori/post','Tambah Data',array('class'=>'btn btn-danger btn-sm')) ?>
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
-                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <table class="table table-striped table-bordered table-hover" id="example1">
                                         <thead>
                                             <tr>
                                                 <th>No.</th>

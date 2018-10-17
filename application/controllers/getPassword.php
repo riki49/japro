@@ -7,7 +7,7 @@ class getPassword extends CI_Controller{
     }
     
     function save() {
-        $hasil['data'] =  $this->model_operator->get();
+        $this->model_operator->save();
 
         // foreach ($hasil as $hsl) {
         //     echo $hsl->username;

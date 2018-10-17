@@ -3,8 +3,8 @@ class transaksi extends ci_controller{
     
         function __construct() {
         parent::__construct();
-        $this->load->model(array('model_barang','model_transaksi'));
-        chek_session();
+        $this->load->model(array('model_barang','model_transaksi', 'model_kategori'));
+        // chek_session();
     }
     
     function index()
@@ -17,8 +17,9 @@ class transaksi extends ci_controller{
         else
         {
             $data['barang']=  $this->model_barang->tampil_data();
+            $data['kode']=  $this->model_kategori->tampil_data();
             $data['detail']= $this->model_transaksi->tampilkan_detail_transaksi()->result();
-            $this->template->load('template','transaksi/form_transaksi',$data);
+            $this->load->view('transaksi/form_transaksi',$data);
         }
     }
     
@@ -33,7 +34,7 @@ class transaksi extends ci_controller{
     
     function selesai_belanja()
     {
-        $tanggal=date('Y-m-d');
+        $tanggal=date('d-m-Y');
         $user=  $this->session->userdata('username');
         $id_op=  $this->db->get_where('operator',array('username'=>$user))->row_array();
         $data=array('operator_id'=>$id_op['operator_id'],'tanggal_transaksi'=>$tanggal);
@@ -49,12 +50,12 @@ class transaksi extends ci_controller{
             $tanggal1=  $this->input->post('tanggal1');
             $tanggal2=  $this->input->post('tanggal2');
             $data['record']=  $this->model_transaksi->laporan_periode($tanggal1,$tanggal2);
-            $this->template->load('template','transaksi/laporan',$data);
+            $this->load->view('transaksi/laporan',$data);
         }
         else
         {
             $data['record']=  $this->model_transaksi->laporan_default();
-            $this->template->load('template','transaksi/laporan',$data);
+            $this->load->view('transaksi/laporan',$data);
         }
     }
     
@@ -69,7 +70,7 @@ class transaksi extends ci_controller{
     
     function pdf()
     {
-        $this->load->library('cfpdf');
+        $this->load->library('pdf');
         $pdf=new FPDF('P','mm','A4');
         $pdf->AddPage();
         $pdf->SetFont('Arial','B','L');
@@ -92,13 +93,13 @@ class transaksi extends ci_controller{
             $pdf->Cell(10, 7, $no, 1,0);
             $pdf->Cell(27, 7, $r->tanggal_transaksi, 1,0);
             $pdf->Cell(30, 7, $r->nama_lengkap, 1,0);
-            $pdf->Cell(38, 7, $r->total, 1,1);
+            $pdf->Cell(38, 7, "Rp. ".number_format($r->total,2), 1,1);
             $no++;
             $total=$total+$r->total;
         }
         // end
         $pdf->Cell(67,7,'Total',1,0,'R');
-        $pdf->Cell(38,7,$total,1,0);
+        $pdf->Cell(38,7,"Rp.". number_format($total,2),1,0);
         $pdf->Output();
     }
 }
